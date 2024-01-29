@@ -14,177 +14,350 @@ class _mainScreenState extends State<mainScreen> {
   Widget build(BuildContext context) {
     var textThem = Theme.of(context).textTheme;
     var size = MediaQuery.of(context).size;
-    double bodyMargin = size.width / 12;
+    double bodyMargin = size.width / 20;
     return Scaffold(
-      body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
-        child: Column(
+      appBar: AppBar(
+        backgroundColor: solidColors.scafoldBg,
+        elevation: 0,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            //AppBar
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Icon(Icons.menu),
-                Image.asset('assets/images/logo.png',
-                    height: size.height / 13.6),
-                Icon(Icons.search),
-              ],
-            ),
+            const Icon(Icons.menu),
+            Image.asset('assets/images/logo.png',
+                height: size.height / 13.6,),
+            const Icon(Icons.search),
+          ],
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: SafeArea(
+            child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
+          child: Column(
+            children: [
 
-            //Poster
-            Stack(
-              children: [
-                Container(
-                  width: size.width / 1.25,
-                  height: size.height / 4.2,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
-                    image: DecorationImage(
-                      image:
-                          Image.asset(homePagePosterMap["imageAssets"]).image,
-                      fit: BoxFit.cover,
+
+              //Poster
+              Stack(
+                children: [
+                  Container(
+                    width: size.width / 1.25,
+                    height: size.height / 4.2,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(16)),
+                      image: DecorationImage(
+                        image:
+                            Image.asset(homePagePosterMap["imageAssets"]).image,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    foregroundDecoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(16)),
+                      gradient: LinearGradient(
+                          colors: gradiantColors.homePosterCoverGradiant,
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter),
                     ),
                   ),
-                  foregroundDecoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
-                    gradient: LinearGradient(
-                        colors: gradiantColors.homePosterCoverGradiant,
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter),
-                  ),
-                ),
-                Positioned(
-                  bottom: 10,
-                  left: 0,
-                  right: 0,
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.remove_red_eye_sharp,
-                                color: Colors.white,
-                                size: 16,
-                              ),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Text(homePagePosterMap["view"],
-                                  style: textThem.subtitle1),
-                            ],
-                          ),
-                          Text(
-                            homePagePosterMap["writer"] +
-                                " - " +
-                                homePagePosterMap["date"],
-                            style: textThem.subtitle1,
-                          ),
-                        ],
-                      ),
-                      Text(homePagePosterMap["title"],
-                          style: textThem.headline1),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            //TagList
-            SizedBox(
-              height: 60,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: tagList.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.fromLTRB(
-                        0, 8, index == 0 ? bodyMargin : 15, 8),
-                    child: Container(
-                      height: 60.0,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(24)),
-                        color: Colors.cyan,
-                        gradient: LinearGradient(
-                            colors: gradiantColors.tags,
-                            begin: Alignment.centerRight,
-                            end: Alignment.centerLeft),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
-                        child: Row(
+                  Positioned(
+                    bottom: 10,
+                    left: 0,
+                    right: 0,
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.remove_red_eye_sharp,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
+                                const SizedBox(
+                                  width: 8,
+                                ),
+                                Text(homePagePosterMap["view"],
+                                    style: textThem.subtitle1),
+                              ],
+                            ),
                             Text(
-                              tagList[index].title,
-                              style: textThem.headline2,
-                            ),
-                            Icon(
-                              Icons.tag,
-                              color: Colors.white,
-                              size: 24,
-                            ),
-                            SizedBox(
-                              width: 5.0,
+                              homePagePosterMap["writer"] +
+                                  " - " +
+                                  homePagePosterMap["date"],
+                              style: textThem.subtitle1,
                             ),
                           ],
                         ),
-                      ),
+                        Text(homePagePosterMap["title"],
+                            style: textThem.headline1),
+                      ],
                     ),
-                  );
-                },
-              ),
-            ),
-            
-            
-            //SeeMore
-            Padding(
-              padding: EdgeInsets.only(right: bodyMargin, bottom: 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  SizedBox( height:32),
-                  Text("مشاهده داغ ترین نوشته ها",style: textThem.headline3,),
-                  SizedBox( width:13),
-                  Icon(Icons.edit, color: solidColors.seeMore),
-
+                  ),
                 ],
               ),
-            ),
+              const SizedBox(height: 16),
 
-
-
-            //Post
-            Padding(
-              padding:  EdgeInsets.only(right: bodyMargin),
-              child: SizedBox(
-                height: size.height/4.1,
+              //TagList
+              SizedBox(
+                height: 60,
                 child: ListView.builder(
-                  itemCount: 7,
                   scrollDirection: Axis.horizontal,
+                  itemCount: tagList.length,
                   itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 60,
-                      width: 100,
-                      color: Colors.yellow,
-                    ),
-                  );
-                },),
+                    return Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          0, 8, index == 0 ? bodyMargin : 20, 8),
+                      child: Container(
+                        height: 60.0,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(24)),
+                          gradient: LinearGradient(
+                              colors: gradiantColors.tags,
+                              begin: Alignment.centerRight,
+                              end: Alignment.centerLeft),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
+                          child: Row(
+                            children: [
+                              Text(
+                                tagList[index].title,
+                                style: textThem.headline2,
+                              ),
+                              const Icon(
+                                Icons.tag,
+                                color: Colors.white,
+                                size: 24,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
-            )
 
+              //SeeMore
+              Padding(
+                padding: EdgeInsets.only(right: bodyMargin, bottom: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    const SizedBox(height: 32),
+                    Text(
+                      "مشاهده داغ ترین نوشته ها",
+                      style: textThem.headline3,
+                    ),
+                    const SizedBox(width: 13),
+                    const Icon(Icons.edit, color: solidColors.seeMore),
+                  ],
+                ),
+              ),
 
+              //blogList
+              Padding(
+                padding: EdgeInsets.only(right: bodyMargin),
+                child: SizedBox(
+                  height: size.height / 4.1,
+                  child: ListView.builder(
+                    itemCount: 7,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      //blogItems
+                      return Padding(
+                        padding: EdgeInsets.only(
+                            right: index == 0 ? bodyMargin : 15, bottom: 14),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: size.height / 5.3,
+                              width: size.width / 2.4,
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(16),
+                                      ),
+                                      image: DecorationImage(
+                                          image: Image.asset(
+                                                  'assets/images/per1.jpg')
+                                              .image,
+                                          fit: BoxFit.cover),
+                                    ),
+                                    foregroundDecoration: const BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(16)),
+                                      gradient: LinearGradient(
+                                          begin: Alignment.bottomCenter,
+                                          end: Alignment.topCenter,
+                                          colors: gradiantColors.postGradiant),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    bottom: 8.0,
+                                    left: 0,
+                                    right: 0,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            const Icon(
+                                              Icons.remove_red_eye_sharp,
+                                              color: Colors.white,
+                                              size: 16,
+                                            ),
+                                            const SizedBox(
+                                              width: 8,
+                                            ),
+                                            Text(homePagePosterMap["view"],
+                                                style: textThem.subtitle1),
+                                          ],
+                                        ),
+                                        Text(
+                                          homePagePosterMap["writer"],
+                                          style: textThem.subtitle1,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              child: Text(
+                                'texttexfdshvgjkfcahdhsabcdasjkbcdskvcjhdbashvc dbh vhdfjbvcjhbvhjdgbsahcjdbasncv dsb,Cdjkbscvhjdbhcjdmn   chdjkslhvjdsgvjdgsbchjvdgbcvnzBCvnxzbnvbsfgdklashfghahttexttexttexttexttexttexttexttexttexttexttexttext',
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                              ),
+                              width: size.width / 2.4,
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
 
+              //Podcasts
+              Padding(
+                padding: EdgeInsets.only(right: bodyMargin, bottom: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    const SizedBox(height: 32),
+                    Text(
+                      "مشاهده داغ ترین پادکست ها",
+                      style: textThem.headline3,
+                    ),
+                    const SizedBox(width: 13),
+                    const Icon(Icons.edit, color: solidColors.seeMore),
+                  ],
+                ),
+              ),
 
-          ],
-        ),
-      )),
+              //blogList
+              Padding(
+                padding: EdgeInsets.only(right: bodyMargin),
+                child: SizedBox(
+                  height: size.height / 4.1,
+                  child: ListView.builder(
+                    itemCount: 7,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      //blogItems
+                      return Padding(
+                        padding: EdgeInsets.only(
+                            right: index == 0 ? bodyMargin : 15, bottom: 14),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: size.height / 5.3,
+                              width: size.width / 2.4,
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(16),
+                                      ),
+                                      image: DecorationImage(
+                                          image: Image.asset(
+                                                  'assets/images/per1.jpg')
+                                              .image,
+                                          fit: BoxFit.cover),
+                                    ),
+                                    foregroundDecoration: const BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(16)),
+                                      gradient: LinearGradient(
+                                          begin: Alignment.bottomCenter,
+                                          end: Alignment.topCenter,
+                                          colors: gradiantColors.postGradiant),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    bottom: 8.0,
+                                    left: 0,
+                                    right: 0,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            const Icon(
+                                              Icons.remove_red_eye_sharp,
+                                              color: Colors.white,
+                                              size: 16,
+                                            ),
+                                            const SizedBox(
+                                              width: 8,
+                                            ),
+                                            Text(homePagePosterMap["view"],
+                                                style: textThem.subtitle1),
+                                          ],
+                                        ),
+                                        Text(
+                                          homePagePosterMap["writer"],
+                                          style: textThem.subtitle1,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              child: Text(
+                                'texttexfdshvgjkfcahdhsabcdasjkbcdskvcjhdbashvc dbh vhdfjbvcjhbvhjdgbsahcjdbasncv dsb,Cdjkbscvhjdbhcjdmn   chdjkslhvjdsgvjdgsbchjvdgbcvnzBCvnxzbnvbsfgdklashfghahttexttexttexttexttexttexttexttexttexttexttexttext',
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                              ),
+                              width: size.width / 2.4,
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        )),
+      ),
+
+      bottomNavigationBar: Container(
+
+      ),
+
     );
   }
 }

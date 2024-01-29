@@ -1,4 +1,4 @@
-import 'HashTag.dart';
+import 'data_Models.dart';
 
 Map homePagePosterMap={
   "imageAssets":"assets/images/Poster_programmer.png",
@@ -14,7 +14,6 @@ HashTagModel(title: "Java"),
   HashTagModel(title: "Mobile"),
   HashTagModel(title: "Xamarin"),
   HashTagModel(title: "JavaScript"),
-  HashTagModel(title: "C#"),
 
 
 ];

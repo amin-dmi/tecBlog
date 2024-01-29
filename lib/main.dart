@@ -23,9 +23,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      supportedLocales: [
-        Locale('fa'), // Persian
-      ],
       title: 'Flutter Demo',
       theme: ThemeData(
         fontFamily: 'dana',
