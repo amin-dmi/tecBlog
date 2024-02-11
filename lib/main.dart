@@ -1,9 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tecapplication/myColors.dart';
-import 'package:tecapplication/spalshScreen.dart';
+import 'package:tecapplication/view/registerIntro.dart';
+import 'package:tecapplication/view/spalshScreen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -25,6 +25,29 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateColor.resolveWith((states) {
+              if (states.contains(MaterialState.pressed)) {
+                return solidColors.primeryColor;
+              }
+              return solidColors.seeMore;
+            }),
+            textStyle: MaterialStateProperty.resolveWith((states) {
+              if (states.contains(MaterialState.pressed)) {
+                return TextStyle(fontSize: 25);
+              }
+              return TextStyle(fontSize: 20);
+            }),
+          ),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(width: 2.0),
+          ),
+        ),
+        useMaterial3: false,
         fontFamily: 'dana',
         textTheme: const TextTheme(
           // ignore: deprecated_member_use
@@ -58,9 +81,15 @@ class MyApp extends StatelessWidget {
           // ignore: deprecated_member_use
           headline4: TextStyle(
             fontFamily: 'dana',
-            fontSize: 10,
+            fontSize: 16,
             color: Color.fromARGB(255, 70, 70, 70),
-            fontWeight: FontWeight.w300,
+            fontWeight: FontWeight.w400,
+          ),
+          headline5: TextStyle(
+            fontFamily: 'dana',
+            fontSize: 16,
+            color: Color.fromARGB(219, 80, 79, 79),
+            fontWeight: FontWeight.w400,
           ),
         ),
       ),

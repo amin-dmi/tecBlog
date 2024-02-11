@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:tecapplication/mainScreen.dart';
+import 'package:tecapplication/view/mainScreen.dart';
 import 'package:tecapplication/myColors.dart';
+import 'package:tecapplication/view/mycategory.dart';
+import 'package:tecapplication/view/registerIntro.dart';
 
 class splashScreen extends StatefulWidget {
   const splashScreen({super.key});
@@ -14,8 +16,10 @@ class _splashScreenState extends State<splashScreen> {
   @override
   void initState() {
     Future.delayed(Duration(seconds: 0)).then((value) {
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (context) => mainScreen()));
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => mainScreen()));
+      // Navigator.of(context)
+      //     .pushReplacement(MaterialPageRoute(builder: (context) => category()));
     });
 
     super.initState();

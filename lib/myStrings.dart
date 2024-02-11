@@ -4,4 +4,24 @@ class myString {
   static const relatedArticel = "نوشته های مرتبط";
   static const submitArticel = "ارسال مقاله";
   static const submitPodcast = "ارسال پادکست";
+  static const imageProfile = "ویرایش عکس پروفایل";
+
+  static const myFavBlog = "مقالات مورد علاقه من";
+  static const insertYourEmail = "لطفا ایمیلتو وارد کن";
+  static const myFavPodcast = "پادکست مورد علاقه من ";
+  static const logOut = "خروج از حساب کاربری ";
+
+  static const activateCode = "کدفعالسازی را وارد کنید";
+  static const PleaseSelectFavYoutTag =
+      "دسته بندی های که دوست داری رو انتخاب کن";
+
+  static const welcome = """به تک‌بلاگ خوش اومدی
+
+برای ارسال مطلب و پادکست باید حتما 
+ثبت نام کنی """;
+
+  static const successfulRegister = """
+تبریک میگم ، ایمیل با موفقیت تایید شد
+لطفا اطلاعات ثبت نام رو کامل کن
+""";
 }
