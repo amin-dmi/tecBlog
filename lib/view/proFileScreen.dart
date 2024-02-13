@@ -1,8 +1,8 @@
-import 'package:tecapplication/myColors.dart';
 import 'package:flutter/material.dart';
-import 'package:tecapplication/myStrings.dart';
+import 'package:tecapplication/component/myColors.dart';
+import 'package:tecapplication/component/myStrings.dart';
 
-import '../my_component.dart';
+import '../component/my_component.dart';
 
 class profileScreen extends StatelessWidget {
   final Size size;

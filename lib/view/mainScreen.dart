@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tecapplication/models/fake_data.dart';
-import 'package:tecapplication/myColors.dart';
 import 'package:tecapplication/view/proFileScreen.dart';
+import 'package:tecapplication/component/myColors.dart';
 
 import 'homeScreen.dart';
 

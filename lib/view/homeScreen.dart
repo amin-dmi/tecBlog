@@ -1,7 +1,8 @@
-import 'package:tecapplication/myColors.dart';
+import 'package:tecapplication/component/myColors.dart';
 import 'package:flutter/material.dart';
 import 'package:tecapplication/models/fake_data.dart';
-import 'package:tecapplication/my_component.dart';
+
+import '../component/my_component.dart';
 
 class homeScreen extends StatelessWidget {
   final Size size;

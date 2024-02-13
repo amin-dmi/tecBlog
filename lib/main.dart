@@ -1,9 +1,7 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tecapplication/myColors.dart';
-import 'package:tecapplication/view/registerIntro.dart';
 import 'package:tecapplication/view/spalshScreen.dart';
+import 'package:tecapplication/component/myColors.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
