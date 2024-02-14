@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:tecapplication/models/fake_data.dart';
 import 'package:flutter/material.dart';
 import 'package:tecapplication/component/myColors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class myDivider extends StatelessWidget {
   Size? size;
@@ -54,5 +57,13 @@ class mainTags extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+myLunchUrl(String myUrl) async {
+  var uri = Uri.parse(myUrl);
+
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
   }
 }

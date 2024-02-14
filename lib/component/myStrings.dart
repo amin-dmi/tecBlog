@@ -10,6 +10,11 @@ class myString {
   static const insertYourEmail = "لطفا ایمیلتو وارد کن";
   static const myFavPodcast = "پادکست مورد علاقه من ";
   static const logOut = "خروج از حساب کاربری ";
+  static const shareText =
+      """من از تک بلاگ استفاده میکنم، خیلی باحاله توام استفاده کن \n
+  @amin.dmi
+  
+  """;
 
   static const activateCode = "کدفعالسازی را وارد کنید";
   static const PleaseSelectFavYoutTag =
@@ -24,4 +29,6 @@ class myString {
 تبریک میگم ، ایمیل با موفقیت تایید شد
 لطفا اطلاعات ثبت نام رو کامل کن
 """;
+
+  static const techBlogUrlGitHub = "https://github.com/amin-dmi/tecBlog";
 }

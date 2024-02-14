@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:tecapplication/component/api_constant.dart';
+import 'package:tecapplication/component/myStrings.dart';
+import 'package:tecapplication/component/my_component.dart';
 import 'package:tecapplication/models/fake_data.dart';
+import 'package:tecapplication/services/dio_services.dart';
 import 'package:tecapplication/view/proFileScreen.dart';
 import 'package:tecapplication/component/myColors.dart';
 
 import 'homeScreen.dart';
 
-class mainScreen extends StatefulWidget {
-  const mainScreen({super.key});
-
-  @override
-  State<mainScreen> createState() => _mainScreenState();
-}
-
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
-class _mainScreenState extends State<mainScreen> {
-  var selectedPageIndex = 0;
+class MainScreenState extends StatelessWidget {
+  RxInt selectedPageIndex = 0.obs;
+
+  MainScreenState({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,7 @@ class _mainScreenState extends State<mainScreen> {
               ),
               ListTile(
                 title: Text(
-                  'پروفایل کاربری ',
+                  'درباره ی تک بلاگ',
                   style: textTheme.headline4,
                 ),
                 onTap: () {},
@@ -64,20 +65,24 @@ class _mainScreenState extends State<mainScreen> {
               ),
               ListTile(
                 title: Text(
-                  'پروفایل کاربری ',
+                  'اشتراک گذاری تک بلاگ',
                   style: textTheme.headline4,
                 ),
-                onTap: () {},
+                onTap: () async {
+                  await Share.share(myString.shareText);
+                },
               ),
               const Divider(
                 color: solidColors.dividerColor,
               ),
               ListTile(
                 title: Text(
-                  'پروفایل کاربری ',
+                  'تک بلاگ در گیت هاب',
                   style: textTheme.headline4,
                 ),
-                onTap: () {},
+                onTap: () {
+                  myLunchUrl(myString.techBlogUrlGitHub);
+                },
               ),
             ],
           ),
@@ -116,8 +121,9 @@ class _mainScreenState extends State<mainScreen> {
           child: Stack(
             children: [
               Positioned.fill(
-                child: IndexedStack(
-                  index: selectedPageIndex,
+                  child: Obx(
+                () => IndexedStack(
+                  index: selectedPageIndex.value,
                   children: [
                     homeScreen(
                         size: size,
@@ -129,14 +135,12 @@ class _mainScreenState extends State<mainScreen> {
                         bodyMargin: bodyMargin)
                   ],
                 ),
-              ),
+              )),
               bottomNavigation(
                 size: size,
                 bodyMargin: bodyMargin,
                 changeScreen: (int value) {
-                  setState(() {
-                    selectedPageIndex = value;
-                  });
+                  selectedPageIndex.value = value;
                 },
               ),
             ],
