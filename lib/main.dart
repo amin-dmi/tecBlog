@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tecapplication/view/articel_list_screen.dart';
 import 'package:tecapplication/view/spalshScreen.dart';
 import 'package:tecapplication/component/myColors.dart';
 
@@ -91,7 +92,8 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: splashScreen(),
+      //home: splashScreen(),
+      home: const ArticleListScreen(),
     );
   }
 }

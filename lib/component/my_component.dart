@@ -1,5 +1,6 @@
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:tecapplication/component/text_style.dart';
 import 'package:tecapplication/controller/home_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:tecapplication/component/myColors.dart';
@@ -80,4 +81,39 @@ class loading extends StatelessWidget {
       size: 32.0,
     );
   }
+}
+
+PreferredSize appBar(String titleText) {
+  return PreferredSize(
+    preferredSize: Size.fromHeight(80.0),
+    child: Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16.0),
+          child: Container(
+            child: Icon(Icons.keyboard_arrow_left),
+            height: 40.0,
+            width: 40.0,
+            decoration: BoxDecoration(
+                color: solidColors.primeryColor.withAlpha(100),
+                shape: BoxShape.circle),
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: Center(
+              child: Text(
+                titleText,
+                style: appBarTextStyle,
+              ),
+            ),
+          ),
+        ],
+        elevation: 0,
+      ),
+    ),
+  );
 }
