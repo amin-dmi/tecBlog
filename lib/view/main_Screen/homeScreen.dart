@@ -1,10 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
 import 'package:tecapplication/component/myColors.dart';
 import 'package:flutter/material.dart';
 import 'package:tecapplication/controller/home_screen_controller.dart';
 import 'package:tecapplication/models/fake_data.dart';
-
-import '../component/my_component.dart';
+import '../../component/my_component.dart';
 
 class homeScreen extends StatelessWidget {
   final Size size;
@@ -18,21 +18,26 @@ class homeScreen extends StatelessWidget {
     required this.textTheme,
     required this.bodyMargin,
   });
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          homePagePoster(),
-          const SizedBox(height: 16),
-          homePageTagList(),
-          homePageSeeMoreBlog(),
-          topVisited(),
-          homePagePodcast(),
-          topVisited(),
-          const SizedBox(height: 50)
-        ],
-      ),
+    return Obx(
+      () => homeScreenController.loading == false
+          ? SingleChildScrollView(
+              child: Column(
+                children: [
+                  homePagePoster(),
+                  const SizedBox(height: 16),
+                  homePageTagList(),
+                  homePageSeeMoreBlog(),
+                  topVisited(),
+                  homePagePodcast(),
+                  topVisited(),
+                  const SizedBox(height: 50)
+                ],
+              ),
+            )
+          : loading(),
     );
   }
 
@@ -187,10 +192,26 @@ class homeScreen extends StatelessWidget {
         Container(
           width: size.width / 1.25,
           height: size.height / 4.2,
+          child: CachedNetworkImage(
+            imageUrl: homeScreenController.poster.value.image!,
+            imageBuilder: ((context, imageProvider) => Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(16)),
+                      image: DecorationImage(
+                          image: imageProvider, fit: BoxFit.cover)),
+                )),
+            placeholder: ((context, url) => loading()),
+            errorWidget: ((context, url, error) => Icon(
+                  Icons.image_not_supported,
+                  size: 50.0,
+                  color: Colors.grey,
+                )),
+          ),
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(16)),
             image: DecorationImage(
-              image: Image.asset(homePagePosterMap["imageAssets"]).image,
+              image:
+                  Image.asset(homeScreenController.poster.value.image!).image,
               fit: BoxFit.cover,
             ),
           ),
@@ -233,7 +254,7 @@ class homeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              Text(homePagePosterMap["title"], style: textTheme.headline1),
+              Text(homeScreenController.poster.value.title!),
             ],
           ),
         ),

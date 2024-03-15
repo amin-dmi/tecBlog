@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:tecapplication/view/mainScreen.dart';
+import 'package:tecapplication/component/my_component.dart';
+import 'package:tecapplication/view/main_Screen/mainScreen.dart';
 import 'package:tecapplication/component/myColors.dart';
 
 class splashScreen extends StatefulWidget {
@@ -34,10 +35,7 @@ class _splashScreenState extends State<splashScreen> {
             SizedBox(
               height: 40,
             ),
-            SpinKitFadingCircle(
-              color: solidColors.primeryColor,
-              size: 50.0,
-            )
+            loading()
           ],
         ),
       ),

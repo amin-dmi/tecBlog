@@ -1,6 +1,6 @@
-import 'dart:math';
-
-import 'package:tecapplication/models/fake_data.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
+import 'package:tecapplication/controller/home_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:tecapplication/component/myColors.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -45,7 +45,7 @@ class mainTags extends StatelessWidget {
         child: Row(
           children: [
             Text(
-              tagList[index].title,
+              Get.find<HomeScreenController>().tagList[index].title!,
               style: textTheme.headline2,
             ),
             const Icon(
@@ -65,5 +65,19 @@ myLunchUrl(String myUrl) async {
 
   if (await canLaunchUrl(uri)) {
     await launchUrl(uri);
+  }
+}
+
+class loading extends StatelessWidget {
+  const loading({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SpinKitFadingCube(
+      color: solidColors.primeryColor,
+      size: 32.0,
+    );
   }
 }

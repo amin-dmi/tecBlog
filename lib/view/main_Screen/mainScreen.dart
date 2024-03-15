@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:tecapplication/component/api_constant.dart';
 import 'package:tecapplication/component/myStrings.dart';
 import 'package:tecapplication/component/my_component.dart';
-import 'package:tecapplication/models/fake_data.dart';
-import 'package:tecapplication/services/dio_services.dart';
-import 'package:tecapplication/view/proFileScreen.dart';
+import 'package:tecapplication/view/main_Screen/proFileScreen.dart';
 import 'package:tecapplication/component/myColors.dart';
 
 import 'homeScreen.dart';
