@@ -85,7 +85,7 @@ class loading extends StatelessWidget {
 
 PreferredSize appBar(String titleText) {
   return PreferredSize(
-    preferredSize: Size.fromHeight(80.0),
+    preferredSize: Size.fromHeight(60.0),
     child: Padding(
       padding: const EdgeInsets.all(12.0),
       child: AppBar(
