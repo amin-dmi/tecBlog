@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tecapplication/view/mycategory.dart';
+import 'package:get/get.dart';
+import 'package:tecapplication/controller/register_Controller.dart';
 import 'package:tecapplication/component/myStrings.dart';
 import 'package:tecapplication/component/myColors.dart';
 
-class RigesterCustomer extends StatelessWidget {
-  const RigesterCustomer({super.key});
+class RegisterIntro extends StatelessWidget {
+  RegisterIntro({super.key});
+  var registerController = Get.find<RegisterController>();
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +78,7 @@ class RigesterCustomer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
                     child: TextField(
+                      controller: registerController.emailTextEditingController,
                       style: textTheme.headline5,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -85,6 +88,7 @@ class RigesterCustomer extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
+                      registerController.register();
                       Navigator.pop(context);
                       _activateCodeBottomSheet(context, size, textTheme);
                     },
@@ -128,17 +132,20 @@ class RigesterCustomer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
                     child: TextField(
+                      controller:
+                          registerController.activeTextEditingController,
                       style: textTheme.headline5,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
-                          hintText: "amin.dmi1375@gmail.com",
-                          hintStyle: textTheme.headline5),
+                          hintText: "********", hintStyle: textTheme.headline5),
                     ),
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => category()));
+                      registerController.verify();
+
+                      // Navigator.of(context).pushReplacement(
+                      //     MaterialPageRoute(builder: (context) => category()));
                     },
                     child: Text('ادامه'),
                   )

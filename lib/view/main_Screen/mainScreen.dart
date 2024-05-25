@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:tecapplication/component/myStrings.dart';
 import 'package:tecapplication/component/my_component.dart';
+import 'package:tecapplication/controller/register_Controller.dart';
 import 'package:tecapplication/view/main_Screen/proFileScreen.dart';
 import 'package:tecapplication/component/myColors.dart';
+import 'package:tecapplication/view/register/registerIntro.dart';
 
 import 'homeScreen.dart';
 
@@ -149,7 +151,7 @@ class MainScreenState extends StatelessWidget {
 }
 
 class bottomNavigation extends StatelessWidget {
-  const bottomNavigation(
+  bottomNavigation(
       {super.key,
       required this.size,
       required this.bodyMargin,
@@ -192,12 +194,17 @@ class bottomNavigation extends StatelessWidget {
                   icon: const Icon(Icons.home_filled, color: Colors.white),
                 ),
                 IconButton(
-                  onPressed: () => changeScreen(1),
+                  onPressed: () {
+                    Get.find<RegisterController>().toggleLogin();
+                  },
                   color: Colors.white,
                   icon: const Icon(Icons.edit),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    //TODO: Check Login Status
+                    Get.to(RegisterIntro());
+                  },
                   color: Colors.white,
                   icon: const Icon(Icons.person),
                 ),
