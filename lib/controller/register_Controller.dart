@@ -1,5 +1,8 @@
 import 'dart:developer';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tecapplication/component/api_constant.dart';
@@ -44,8 +47,7 @@ class RegisterController extends GetxController {
         var box = GetStorage();
         box.write(token, response.data["token"]);
         box.write(token, response.data["user_id"]);
-
-        Get.offAll(MainScreenState());
+        Get.to(MainScreenState());
         break;
       case "incorrect_code":
         Get.snackbar("خطا", "کدفعالسازی اشتباه است");
@@ -60,7 +62,77 @@ class RegisterController extends GetxController {
     if (GetStorage().read(token) == null) {
       Get.to(RegisterIntro());
     } else {
-      log("post screen");
+      routeToWriteBottomSheet();
     }
+  }
+
+  routeToWriteBottomSheet() {
+    Get.bottomSheet(
+      Container(
+        height: Get.height / 3,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20),
+            topLeft: Radius.circular(20),
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  SvgPicture.asset('assets/images/tecBot.svg', height: 40),
+                  const SizedBox(width: 8),
+                  const Text("دانسته هات رو با بقیه به اشتراک بذار ...")
+                ],
+              ),
+              const SizedBox(
+                height: 8.0,
+              ),
+              const Text(
+                """فکر کن !!  اینجا بودنت به این معناست که یک گیک تکنولوژی هستی دونسته هات رو با  جامعه‌ی گیک های فارسی زبان به اشتراک بذار""",
+              ),
+              const SizedBox(
+                height: 15.0,
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+                GestureDetector(
+                  onTap: () {
+                    log("مدیریت مقاله");
+                  },
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Image.asset('assets/images/writeArticel.png',
+                            height: 32),
+                        const SizedBox(width: 8),
+                        const Text("مدیریت مقاله")
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    log("مدیریت پادکست");
+                  },
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Image.asset('assets/images/writePodcast.png',
+                            height: 32),
+                        const SizedBox(width: 8),
+                        const Text("مدیریت پادکست")
+                      ],
+                    ),
+                  ),
+                )
+              ]),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -6,14 +6,10 @@ import 'package:tecapplication/component/myColors.dart';
 import 'package:tecapplication/component/my_component.dart';
 import 'package:tecapplication/controller/list_article_controller.dart';
 import 'package:tecapplication/controller/single_article_controller.dart';
-import 'package:tecapplication/view/articel_list_screen.dart';
+import 'package:tecapplication/view/articles/articel_list_screen.dart';
 
 class Single extends StatelessWidget {
-  // SingleArticleController singelArticelController =
-  //     Get.put(SingleArticleController());
-
   var singelArticelController = Get.find<SingleArticleController>();
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

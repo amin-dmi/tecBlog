@@ -5,7 +5,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:tecapplication/binding.dart';
 import 'package:tecapplication/component/myColors.dart';
 import 'package:tecapplication/view/main_Screen/mainScreen.dart';
-import 'package:tecapplication/view/single.dart';
+import 'package:tecapplication/view/articles/single.dart';
 import 'package:tecapplication/view/spalshScreen.dart';
 
 Future<void> main() async {

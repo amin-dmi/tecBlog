@@ -6,7 +6,7 @@ import 'package:tecapplication/component/my_component.dart';
 import 'package:tecapplication/controller/home_screen_controller.dart';
 import 'package:tecapplication/controller/single_article_controller.dart';
 import 'package:tecapplication/models/fake_data.dart';
-import 'package:tecapplication/view/articel_list_screen.dart';
+import 'package:tecapplication/view/articles/articel_list_screen.dart';
 
 class homeScreen extends StatelessWidget {
   final Size size;
