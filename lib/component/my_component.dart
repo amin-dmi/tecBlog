@@ -92,13 +92,18 @@ PreferredSize appBar(String titleText) {
         backgroundColor: Colors.transparent,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16.0),
-          child: Container(
-            child: Icon(Icons.keyboard_arrow_left),
-            height: 40.0,
-            width: 40.0,
-            decoration: BoxDecoration(
-                color: solidColors.primeryColor.withAlpha(100),
-                shape: BoxShape.circle),
+          child: GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: Container(
+              child: Icon(Icons.keyboard_arrow_right),
+              height: 40.0,
+              width: 40.0,
+              decoration: BoxDecoration(
+                  color: solidColors.primeryColor.withAlpha(100),
+                  shape: BoxShape.circle),
+            ),
           ),
         ),
         actions: [

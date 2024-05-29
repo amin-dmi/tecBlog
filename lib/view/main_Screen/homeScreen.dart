@@ -4,7 +4,7 @@ import 'package:tecapplication/component/myColors.dart';
 import 'package:flutter/material.dart';
 import 'package:tecapplication/component/my_component.dart';
 import 'package:tecapplication/controller/home_screen_controller.dart';
-import 'package:tecapplication/controller/single_article_controller.dart';
+import 'package:tecapplication/controller/article/single_article_controller.dart';
 import 'package:tecapplication/models/fake_data.dart';
 import 'package:tecapplication/view/articles/articel_list_screen.dart';
 

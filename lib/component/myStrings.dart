@@ -24,6 +24,9 @@ class myString {
 
 برای ارسال مطلب و پادکست باید حتما 
 ثبت نام کنی """;
+  static const articleEmpty = """هنوز هیچ مقاله ای به جامعه گیک های فارسی 
+      اضافه نکردی !!!
+""";
 
   static const successfulRegister = """
 تبریک میگم ، ایمیل با موفقیت تایید شد

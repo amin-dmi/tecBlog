@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tecapplication/component/my_component.dart';
-import 'package:tecapplication/controller/list_article_controller.dart';
-import 'package:tecapplication/controller/single_article_controller.dart';
+import 'package:tecapplication/controller/article/list_article_controller.dart';
+import 'package:tecapplication/controller/article/single_article_controller.dart';
 import 'package:tecapplication/main.dart';
 
 class ArticleListScreen extends StatelessWidget {
@@ -34,7 +34,7 @@ class ArticleListScreen extends StatelessWidget {
                         // listarticleController.articleList[index].id!);
                         singlearticleController.getList(
                             listarticleController.articleList[index].id);
-                        Get.toNamed(routeSingleArticle);
+                        Get.toNamed(NamedRoute.routeSingleArticle);
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

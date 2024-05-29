@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tecapplication/component/api_constant.dart';
 import 'package:tecapplication/component/storage_const.dart';
+import 'package:tecapplication/main.dart';
 import 'package:tecapplication/services/dio_services.dart';
 import 'package:tecapplication/view/main_Screen/mainScreen.dart';
 import 'package:tecapplication/view/register/registerIntro.dart';
@@ -100,7 +101,7 @@ class RegisterController extends GetxController {
               Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
                 GestureDetector(
                   onTap: () {
-                    log("مدیریت مقاله");
+                    Get.toNamed(NamedRoute.manageArticle);
                   },
                   child: Container(
                     child: Row(

@@ -4,8 +4,8 @@ import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:tecapplication/component/myColors.dart';
 import 'package:tecapplication/component/my_component.dart';
-import 'package:tecapplication/controller/list_article_controller.dart';
-import 'package:tecapplication/controller/single_article_controller.dart';
+import 'package:tecapplication/controller/article/list_article_controller.dart';
+import 'package:tecapplication/controller/article/single_article_controller.dart';
 import 'package:tecapplication/view/articles/articel_list_screen.dart';
 
 class Single extends StatelessWidget {

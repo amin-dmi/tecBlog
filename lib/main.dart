@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tecapplication/binding.dart';
 import 'package:tecapplication/component/myColors.dart';
+import 'package:tecapplication/view/articles/manage_article.dart';
 import 'package:tecapplication/view/main_Screen/mainScreen.dart';
 import 'package:tecapplication/view/articles/single.dart';
 import 'package:tecapplication/view/spalshScreen.dart';
@@ -27,13 +28,17 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       getPages: [
         GetPage(
-            name: routeMainScreen,
+            name: NamedRoute.routeMainScreen,
             page: () => MainScreenState(),
             binding: RegisterBinding()),
         GetPage(
-            name: routeSingleArticle,
+            name: NamedRoute.routeSingleArticle,
             page: () => Single(),
             binding: ArticleBinding()),
+        GetPage(
+            name: NamedRoute.manageArticle,
+            page: () => ManageArticle(),
+            binding: ArticelManagerBinding()),
       ],
       locale: const Locale('fa'),
       debugShowCheckedModeBanner: false,
@@ -55,7 +60,7 @@ class MyApp extends StatelessWidget {
           }),
           textStyle: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.pressed)) {
-              return TextStyle(fontSize: 25);
+              return TextStyle(fontSize: 23);
             }
             return TextStyle(fontSize: 20);
           }),
@@ -116,5 +121,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-const String routeMainScreen = '/MainScreen';
-const String routeSingleArticle = '/SingleArticle';
+class NamedRoute {
+  static String routeMainScreen = '/MainScreen';
+  static String routeSingleArticle = '/SingleArticle';
+  static String manageArticle = '/ManageArticle';
+}
